@@ -1,0 +1,19 @@
+.page-header {
+  background-color: var(--primary-color);
+  padding: 8px 0;
+
+  @media (min-width: 768px) {
+    padding: 16px;
+  }
+
+  @media (min-width: 1200px) {
+    padding: 24px;
+  }
+}
+
+.page-header__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}

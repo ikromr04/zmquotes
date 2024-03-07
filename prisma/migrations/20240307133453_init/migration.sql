@@ -1,7 +1,7 @@
 -- CreateTable
 CREATE TABLE "Account" (
-    "id" TEXT NOT NULL PRIMARY KEY,
-    "userId" TEXT NOT NULL,
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "userId" INTEGER NOT NULL,
     "type" TEXT NOT NULL,
     "provider" TEXT NOT NULL,
     "providerAccountId" TEXT NOT NULL,
@@ -17,16 +17,16 @@ CREATE TABLE "Account" (
 
 -- CreateTable
 CREATE TABLE "Session" (
-    "id" TEXT NOT NULL PRIMARY KEY,
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     "sessionToken" TEXT NOT NULL,
-    "userId" TEXT NOT NULL,
+    "userId" INTEGER NOT NULL,
     "expires" DATETIME NOT NULL,
     CONSTRAINT "Session_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User" ("id") ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 -- CreateTable
 CREATE TABLE "User" (
-    "id" TEXT NOT NULL PRIMARY KEY,
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     "name" TEXT NOT NULL,
     "password" TEXT NOT NULL,
     "email" TEXT NOT NULL,
