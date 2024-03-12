@@ -12,42 +12,18 @@ function PageFooter(): JSX.Element {
       <div className="page-footer__container container">
         <MainLogo />
 
-        <div className="page-footer__navs">
-          <ul className="page-footer__nav">
-            <li className="page-footer__nav-item">
-              <TextLink href="/terms-of-use">
-                Terms of use
-              </TextLink>
-            </li>
-            <li className="page-footer__nav-item">
-              <TextLink href="/privacy-policy">
-                Privacy policy
-              </TextLink>
-            </li>
-          </ul>
-          <ul className="page-footer__nav">
-            <li className="page-footer__nav-item">
-              <TextLink href="/">
-                Thoughs
-              </TextLink>
-            </li>
-            <li className="page-footer__nav-item">
-              <TextLink href="/tags">
-                Tags
-              </TextLink>
-            </li>
-            <li className="page-footer__nav-item">
-              <TextLink href="/author">
-                Author
-              </TextLink>
-            </li>
-            <li className="page-footer__nav-item">
-              <TextLink href="/search">
-                Search
-              </TextLink>
-            </li>
-          </ul>
-        </div>
+        <ul className="page-footer__nav">
+          <li className="page-footer__nav-item">
+            <TextLink href="/terms-of-use">
+              Terms of use
+            </TextLink>
+          </li>
+          <li className="page-footer__nav-item">
+            <TextLink href="/privacy-policy">
+              Privacy policy
+            </TextLink>
+          </li>
+        </ul>
 
         <div className="page-footer__bottom">
           <ul className="page-footer__contacts">
