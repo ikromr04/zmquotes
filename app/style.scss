@@ -4,6 +4,8 @@
   --primary-color: #212121;
   --secondary-color: rgb(226, 182, 92);
   --base-white: #ffffff;
+  --gray-200: #eeeeee;
+  --gray-300: #e0e0e0;
 }
 
 *,
@@ -25,6 +27,7 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  background-color: var(--gray-200);
 }
 
 img {

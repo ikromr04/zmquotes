@@ -14,24 +14,24 @@ function PageNavigation({
   className?: string
 }): JSX.Element {
   return (
-    <nav className={classNames(className, 'main-navigation')}>
-      <ul className="main-navigation__list">
-        <li className="main-navigation__item">
+    <nav className={classNames(className, 'page-navigation')}>
+      <ul className="page-navigation__list">
+        <li className="page-navigation__item">
           <PageLink href="/">
             <QuoteIcon /> Thoughts
           </PageLink>
         </li>
-        <li className="main-navigation__item">
+        <li className="page-navigation__item">
           <PageLink href="/tags">
             <TagIcon /> Tags
           </PageLink>
         </li>
-        <li className="main-navigation__item">
+        <li className="page-navigation__item">
           <PageLink href="/author">
             <AuthorIcon /> Author
           </PageLink>
         </li>
-        <li className="main-navigation__item">
+        <li className="page-navigation__item">
           <PageLink href="/search">
             <SearchIcon /> Search
           </PageLink>

@@ -11,18 +11,18 @@ datasource db {
 }
 
 model Account {
-  id                 String  @id @default(cuid())
-  userId             String
-  type               String
-  provider           String
-  providerAccountId  String
-  refresh_token      String?
-  access_token       String?
-  expires_at         Int?
-  token_type         String?
-  scope              String?
-  id_token           String?
-  session_state      String?
+  id                String  @id @default(cuid())
+  userId            Int
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
@@ -32,18 +32,20 @@ model Account {
 model Session {
   id           String   @id @default(cuid())
   sessionToken String   @unique
-  userId       String
+  userId       Int
   expires      DateTime
   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model User {
-  id            String    @id @default(cuid())
+  id            Int       @id @default(autoincrement())
   name          String
-  password      String
   email         String    @unique
   emailVerified DateTime?
+  password      String
   image         String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
   accounts      Account[]
   sessions      Session[]
 }
@@ -54,4 +56,23 @@ model VerificationToken {
   expires    DateTime
 
   @@unique([identifier, token])
+}
+
+model Quote {
+  id          Int      @id @default(autoincrement())
+  text        String
+  slug        String   @unique
+  twitterLink String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Posts {
+  id          Int      @id @default(autoincrement())
+  slug        String   @unique
+  title       String
+  description String
+  src         String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }

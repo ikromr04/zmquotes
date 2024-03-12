@@ -33,7 +33,10 @@ export const authOptions: AuthOptions = {
 
         if (!isPasswordCorrect) throw new Error('Invalid password');
 
-        return user;
+        return {
+          ...user,
+          id: user.id.toString()
+        };
       },
     }),
   ],

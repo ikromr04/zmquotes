@@ -1,6 +1,6 @@
 -- CreateTable
 CREATE TABLE "Account" (
-    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "id" TEXT NOT NULL PRIMARY KEY,
     "userId" INTEGER NOT NULL,
     "type" TEXT NOT NULL,
     "provider" TEXT NOT NULL,
@@ -17,7 +17,7 @@ CREATE TABLE "Account" (
 
 -- CreateTable
 CREATE TABLE "Session" (
-    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "id" TEXT NOT NULL PRIMARY KEY,
     "sessionToken" TEXT NOT NULL,
     "userId" INTEGER NOT NULL,
     "expires" DATETIME NOT NULL,
@@ -28,10 +28,12 @@ CREATE TABLE "Session" (
 CREATE TABLE "User" (
     "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     "name" TEXT NOT NULL,
-    "password" TEXT NOT NULL,
     "email" TEXT NOT NULL,
     "emailVerified" DATETIME,
-    "image" TEXT
+    "password" TEXT NOT NULL,
+    "image" TEXT,
+    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" DATETIME NOT NULL
 );
 
 -- CreateTable
@@ -39,6 +41,26 @@ CREATE TABLE "VerificationToken" (
     "identifier" TEXT NOT NULL,
     "token" TEXT NOT NULL,
     "expires" DATETIME NOT NULL
+);
+
+-- CreateTable
+CREATE TABLE "Quote" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "text" TEXT NOT NULL,
+    "slug" TEXT NOT NULL,
+    "twitterLink" TEXT,
+    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" DATETIME NOT NULL
+);
+
+-- CreateTable
+CREATE TABLE "Picture" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "title" TEXT NOT NULL,
+    "slug" TEXT NOT NULL,
+    "src" TEXT NOT NULL,
+    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" DATETIME NOT NULL
 );
 
 -- CreateIndex
@@ -55,3 +77,9 @@ CREATE UNIQUE INDEX "VerificationToken_token_key" ON "VerificationToken"("token"
 
 -- CreateIndex
 CREATE UNIQUE INDEX "VerificationToken_identifier_token_key" ON "VerificationToken"("identifier", "token");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "Quote_slug_key" ON "Quote"("slug");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "Picture_slug_key" ON "Picture"("slug");
