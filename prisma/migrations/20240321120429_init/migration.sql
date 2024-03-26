@@ -54,10 +54,11 @@ CREATE TABLE "Quote" (
 );
 
 -- CreateTable
-CREATE TABLE "Picture" (
+CREATE TABLE "Post" (
     "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-    "title" TEXT NOT NULL,
     "slug" TEXT NOT NULL,
+    "title" TEXT NOT NULL,
+    "description" TEXT NOT NULL,
     "src" TEXT NOT NULL,
     "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" DATETIME NOT NULL
@@ -82,4 +83,4 @@ CREATE UNIQUE INDEX "VerificationToken_identifier_token_key" ON "VerificationTok
 CREATE UNIQUE INDEX "Quote_slug_key" ON "Quote"("slug");
 
 -- CreateIndex
-CREATE UNIQUE INDEX "Picture_slug_key" ON "Picture"("slug");
+CREATE UNIQUE INDEX "Post_slug_key" ON "Post"("slug");

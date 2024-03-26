@@ -67,12 +67,12 @@ model Quote {
   updatedAt   DateTime @updatedAt
 }
 
-model Posts {
+model Post {
   id          Int      @id @default(autoincrement())
-  slug        String   @unique
   title       String
-  description String
+  slug        String   @unique
   src         String
+  description String
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }
