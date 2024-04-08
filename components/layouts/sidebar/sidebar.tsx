@@ -1,22 +1,26 @@
+import './sidebar.scss';
 import PostCard from '@/components/ui/post-card/post-card';
 import { Post } from '@prisma/client';
+import classNames from 'classnames';
 
-const getPosts = async (): Promise<Post[]> => {
-  const res = await fetch(`${process.env.API_URL}/posts`, {
+async function Sidebar({
+  className
+}: {
+  className?: string
+}): Promise<JSX.Element> {
+  const posts: Post[] = await fetch(`${process.env.APP_URL}/api/posts`, {
     next: { revalidate: 60 }
-  });
-
-  if (!res.ok)
-    throw new Error('Failed to fetch posts');
-  const data = await res.json();
-  return data.data;
-};
-
-async function Sidebar(): Promise<JSX.Element> {
-  const posts = await getPosts();
+  })
+    .then((res) => {
+      if (!res.ok) {
+        throw new Error('Failed to fetch posts');
+      }
+      return res.json();
+    })
+    .then(({ data }) => data);
 
   return (
-    <aside>
+    <aside className={classNames(className, 'sidebar')}>
       {posts.map((post) => <PostCard key={post.slug} post={post} />)}
     </aside>
   );
